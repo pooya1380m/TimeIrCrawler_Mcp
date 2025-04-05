@@ -1,0 +1,109 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/pooya1380m/RiderProjects/TimeCrawler/TimeIrCrawler/TimeIrCrawler.csproj": {}
+  },
+  "projects": {
+    "/Users/pooya1380m/RiderProjects/TimeCrawler/TimeIrCrawler/TimeIrCrawler.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/pooya1380m/RiderProjects/TimeCrawler/TimeIrCrawler/TimeIrCrawler.csproj",
+        "projectName": "TimeIrCrawler",
+        "projectPath": "/Users/pooya1380m/RiderProjects/TimeCrawler/TimeIrCrawler/TimeIrCrawler.csproj",
+        "packagesPath": "/Users/pooya1380m/.nuget/packages/",
+        "outputPath": "/Users/pooya1380m/RiderProjects/TimeCrawler/TimeIrCrawler/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/pooya1380m/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.12.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[10.0.0-preview.2.25163.2, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[10.0.0-preview.2.25163.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.0-preview.2.25163.2, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[10.0.0-preview.2.25163.2, )"
+            },
+            "ModelContextProtocol": {
+              "target": "Package",
+              "version": "[0.1.0-preview.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.31.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[136.0.7103.1700-beta, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

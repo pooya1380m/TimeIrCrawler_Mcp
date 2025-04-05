@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "timemcp": {
+      "command": "dotnet",
+      "args": [
+        "/Users/pooya1380m/RiderProjects/TimeCrawler/TimeIrCrawler/bin/Debug/net9.0/TimeIrCrawler.dll"
+      ],
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
