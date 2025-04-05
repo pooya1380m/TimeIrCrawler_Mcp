@@ -1,15 +1,17 @@
 ﻿using TimeIrCrawler.Interfaces;
 using TimeIrCrawler.Services;
 using TimeIrCrawler.Tools;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 var builder = Host.CreateApplicationBuilder(args);
 
 // Clear all logging to prevent console output interference with MCP stdio
 builder.Logging.ClearProviders();
-// Optional: Add file logging for debugging instead of console
-builder.Logging.SetMinimumLevel(LogLevel.Information);
+// Add console logging for debugging
+builder.Logging.AddConsole(options => 
+{
+    options.LogToStandardErrorThreshold = LogLevel.Debug;
+});
+builder.Logging.SetMinimumLevel(LogLevel.Debug);
 
 // Register services
 builder.Services.AddScoped<ITimeIrCrawler, TimeIrCrawlerService>();
@@ -33,6 +35,7 @@ try
 {
     var logger = host.Services.GetRequiredService<ILogger<Program>>();
     logger.LogInformation("Starting MCP server...");
+    
     await host.RunAsync();
     logger.LogInformation("MCP server stopped.");
 }

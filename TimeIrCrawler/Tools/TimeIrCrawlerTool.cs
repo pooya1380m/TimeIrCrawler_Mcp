@@ -2,6 +2,7 @@ using System.ComponentModel;
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 using TimeIrCrawler.Interfaces;
+using TimeIrCrawler.Models;
 
 namespace TimeIrCrawler.Tools;
 
@@ -46,5 +47,18 @@ public sealed class TimeIrCrawlerTool
                 GregorianDate = DateTime.Now.ToString("yyyy/MM/dd")
             };
         }
+    }
+
+    [McpServerTool, Description("Gets the events of month.")]
+    public async Task<List<EventDataResponse>> GetEventsDataAsync()
+    {
+        var eventsData = await _crawler.GetEventsDataAsync();
+        
+        return eventsData.Select(e => new EventDataResponse
+        {
+            Date = e.Date,
+            Title = e.Title,
+            Extra = e.Extra
+        }).ToList();
     }
 }

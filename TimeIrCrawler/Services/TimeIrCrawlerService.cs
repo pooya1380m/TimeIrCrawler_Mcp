@@ -5,6 +5,7 @@ using TimeIrCrawler.Interfaces;
 using TimeIrCrawler.Models;
 using Microsoft.Extensions.Logging;
 using System.Globalization;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace TimeIrCrawler.Services;
 
@@ -90,7 +91,71 @@ public class TimeIrCrawlerService : ITimeIrCrawler, IDisposable
             return Task.FromResult(GetFallbackTimeData());
         }
     }
-    
+
+    public Task<List<EventData>> GetEventsDataAsync()
+    {
+        try
+        {
+            if (!_initialized || _driver == null || _wait == null)
+            {
+                _logger.LogWarning("WebDriver not initialized. Returning empty events list.");
+                return Task.FromResult(new List<EventData>());
+            }
+            
+            _logger.LogInformation("Getting events data");
+            
+            // Get all <li> elements under the <ul> with class="list-unstyled"
+            var listItems = _wait.Until(d => d.FindElements(By.XPath("//ul[contains(@class, 'list-unstyled')]/li")));
+            
+            _logger.LogDebug("Found {Count} list items", listItems.Count);
+            
+            var events = new List<EventData>();
+
+            foreach (var li in listItems)
+            {
+                try
+                {
+                    // First span inside <li> is the date
+                    var dateElement = li.FindElement(By.XPath(".//span"));
+                    string date = dateElement.Text.Trim();
+
+                    // Extract the full text content of the <li> element
+                    string fullText = li.Text.Trim();
+
+                    // Remove the date from the full text to get the event title
+                    string title = fullText.StartsWith(date) ? fullText.Substring(date.Length).Trim() : fullText;
+
+                    // Try to find the second span if there's additional info like Gregorian or Hijri date
+                    string extra = "";
+                    var spans = li.FindElements(By.XPath(".//span"));
+                    if (spans.Count > 1)
+                    {
+                        extra = spans[1].Text.Trim();
+                    }
+
+                    events.Add(new EventData()
+                    {
+                        Date = date,
+                        Title = title,
+                        Extra = extra
+                    });
+                }
+                catch (NoSuchElementException ex)
+                {
+                    _logger.LogWarning(ex, "Skipping malformed list item");
+                    continue; // skip malformed <li>
+                }
+            }
+            
+            _logger.LogInformation("Successfully retrieved {Count} events", events.Count);
+            return Task.FromResult(events);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error fetching events data: {Message}", ex.Message);
+            return Task.FromResult(new List<EventData>());
+        }
+    }
     private TimeData GetFallbackTimeData()
     {
         _logger.LogInformation("Using fallback time data mechanism");
