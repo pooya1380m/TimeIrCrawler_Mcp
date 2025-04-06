@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimeIrCrawler")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70c5a4ee1b4916cb5555889fb67c438e6b9cfffc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f68047d961d17dbd039fd6ab696a148b428fe262")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimeIrCrawler")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimeIrCrawler")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
