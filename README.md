@@ -46,6 +46,25 @@ A .NET application that crawls [time.ir](https://www.time.ir) to retrieve curren
    dotnet run
    ```
 
+## Configuration
+
+### MCP Configuration
+
+To integrate with Model Context Protocol, add the following configuration to your `mcp.json` file:
+
+```json
+"simpletime": {
+  "command": "dotnet",
+  "args": [
+    "/path/to/TimeCrawler/TimeIrCrawler/bin/Debug/net9.0/TimeIrCrawler.dll"
+  ],
+  "label": "Simple Time Provider",
+  "description": "Gets simple system time"
+}
+```
+
+Make sure to update the path to the DLL file according to your environment.
+
 ## API Reference
 
 The application exposes two main API endpoints through the MCP server:
